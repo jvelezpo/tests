@@ -10,44 +10,35 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { InputType, Field } from "@nestjs/graphql";
+import { CategoryWhereUniqueInput } from "../../category/base/CategoryWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { Type } from "class-transformer";
 @InputType()
-class CategoryUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+class CategoryUpdateManyWithoutUsersInput {
+  @Field(() => [CategoryWhereUniqueInput], {
     nullable: true,
   })
-  color?: string | null;
+  @ApiProperty({
+    required: false,
+    type: () => [CategoryWhereUniqueInput],
+  })
+  connect?: Array<CategoryWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+  @Field(() => [CategoryWhereUniqueInput], {
     nullable: true,
   })
-  name?: string | null;
+  @ApiProperty({
+    required: false,
+    type: () => [CategoryWhereUniqueInput],
+  })
+  disconnect?: Array<CategoryWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: () => UserWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => [CategoryWhereUniqueInput], {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  @ApiProperty({
+    required: false,
+    type: () => [CategoryWhereUniqueInput],
+  })
+  set?: Array<CategoryWhereUniqueInput>;
 }
-export { CategoryUpdateInput };
+export { CategoryUpdateManyWithoutUsersInput };
